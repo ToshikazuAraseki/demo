@@ -1,0 +1,19 @@
+name: Generate issues report
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Report issues
+        run: |
+          echo '## Weekly Issue Status' >  docs/issue_report/${{ steps.date.outputs.date }}.md
+          gh issue list --search "is:open sort:created-asc" --json "url,title,state,number" >> docs/issue_report/${{ steps.date.outputs.date }}.json
