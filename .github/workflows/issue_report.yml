@@ -15,9 +15,8 @@ jobs:
 
       - name: Report issues
         run: |
-          echo '## Weekly Issue Status' >  ./${{ steps.date.outputs.date }}.md
-          gh issue list --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}.json
-          cat ./${{ steps.date.outputs.date }}.json
+          gh issue list --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}_is.json
+          cat ./${{ steps.date.outputs.date }}_is.json
 
       - name: Report workflow runs
         run: |
