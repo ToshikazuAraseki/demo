@@ -16,5 +16,5 @@ jobs:
       - name: Report issues
         run: |
           echo '## Weekly Issue Status' >  ./${{ steps.date.outputs.date }}.md
-          gh issue list --search "is:open sort:created-asc" --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}.json
+          gh issue list --search "sort:created-asc" --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}.json
           cat ./${{ steps.date.outputs.date }}.json
