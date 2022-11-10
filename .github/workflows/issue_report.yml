@@ -18,3 +18,8 @@ jobs:
           echo '## Weekly Issue Status' >  ./${{ steps.date.outputs.date }}.md
           gh issue list --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}.json
           cat ./${{ steps.date.outputs.date }}.json
+
+      - name: Report workflow runs
+        run: |
+          gh run list --json >> ./${{ steps.date.outputs.date }}_wk.json
+          cat ./${{ steps.date.outputs.date }}_wk.json
