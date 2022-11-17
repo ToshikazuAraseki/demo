@@ -20,5 +20,5 @@ jobs:
 
       - name: Report workflow runs
         run: |
-          gh run list --json "conclusion,createdAt,displayTitle,event,headBranch,name,startedAt,status,updatedAt,workflowName" >> ./${{ steps.date.outputs.date }}_wk.json
+          gh run list --json >> ./${{ steps.date.outputs.date }}_wk.json
           cat ./${{ steps.date.outputs.date }}_wk.json
