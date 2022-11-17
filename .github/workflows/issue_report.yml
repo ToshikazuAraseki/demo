@@ -15,10 +15,10 @@ jobs:
 
       - name: Report issues
         run: |
-          gh issue list --json "number,title,state,createdAt,closedAt" >> ./${{ steps.date.outputs.date }}_is.json
+          gh issue list --json "assignees,author,body,closed,closedAt,comments,createdAt,id,labels,milestone,number,projectCards,reactionGroups,state,title,updatedAt,url" >> ./${{ steps.date.outputs.date }}_is.json
           cat ./${{ steps.date.outputs.date }}_is.json
 
       - name: Report workflow runs
         run: |
-          gh run list --json "conclusion,createdAt,displayTitle,event,headBranch,name,startedAt,status,updatedAt,workflowName" >> ./${{ steps.date.outputs.date }}_wk.json
+          gh run list --json "conclusion,createdAt,databaseId,displayTitle,event,headBranch,headSha,name,startedAt,status,updatedAt,url,workflowDatabaseId,workflowName" >> ./${{ steps.date.outputs.date }}_wk.json
           cat ./${{ steps.date.outputs.date }}_wk.json
