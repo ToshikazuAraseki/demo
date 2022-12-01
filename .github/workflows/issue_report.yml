@@ -15,7 +15,7 @@ jobs:
 
       - name: Report issues
         run: |
-          gh issue list --json "assignees,author,body,closed,closedAt,comments,createdAt,id,labels,milestone,number,projectCards,reactionGroups,state,title,updatedAt,url" >> ./${{ steps.date.outputs.date }}_is.json
+          gh issue list --json "url,repository_url,labels_url,comments_url,events_url,html_url,id,node_id,number,title,user,labels,state,locked,assignee,assignees" >> ./${{ steps.date.outputs.date }}_is.json
           cat ./${{ steps.date.outputs.date }}_is.json
 
       - name: Report workflow runs
